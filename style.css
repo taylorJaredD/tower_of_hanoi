@@ -1,17 +1,44 @@
-/*body {
+body {
+  font-size: 1em;
+  color: #444;
+  line-height: 1.4;
+  font: "Verdana", "Geneva", sans-serif;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+::selection {
+  background: #b3d4fc;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+textArea {
+  resize: vertical;
+}
+#game-board {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-}*/
-.game-board {
-  display: flex;
+  width: 510px;
+  height: 300px;
+  margin: 0 10px;
+  background-color: #dfdfdf;
   position: relative;
-  flex-direction: column-reverse;
-  padding: 10px;
-  justify-content: flex-start;
+  float: right;
 }
-.pegs {
+/*.pegs {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -23,7 +50,7 @@
   position: absolute;
   top: 0;
   left: 0;
-}
+}*/
 
 .tower {
   /* move common styles here, specific styles to specific tower class */
@@ -32,8 +59,11 @@
   font-size: 200px;
   color: black;
   transform: rotate(180deg);
-  padding: 25px;
   z-index: 10;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /*.left-tower {
@@ -64,7 +94,7 @@
   z-index: 10;
 }*/
 
-.disk-1 {
+#disc0 {
   width: 52.5px;
   height: 20px;
   border-radius: 4px;
@@ -73,7 +103,7 @@
   position: relative;
 }
 
-.disk-2 {
+#disc1 {
   width: 70px;
   height: 20px;
   border-radius: 4px;
@@ -82,11 +112,45 @@
   position: relative;
 }
 
-.disk-3 {
+#disc2 {
   width: 87.5px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #3f51b5;
   position: relative;
+}
+
+#playArea {
+  width: 850px;
+  height: 550px;
+  padding: 10px 0;
+  margin: 10px auto;
+  border-radius:8px;
+}
+
+#header {
+  margin: 0 10px 10px 0;
+  width: 510px;
+  height: 160px;
+  position: relative;
+  border-radius: 6px;
+  background-color: #CCC;
+  float: right;
+}
+#moves {
+  margin: 0 0 10px 10px;
+  width: 280px;
+  height: 420px;
+  border-radius: 6px;
+  background-color: #CCC;
+  position: relative;
+  float: left;
+}
+#moves > ol {
+  padding: 3px;
+}
+#moves > ol {
+  padding: 2px 0 6px 30px;
+  font-size: 0.9em;
 }
