@@ -1,4 +1,4 @@
-body {
+/*body {
   font-size: 1em;
   color: #444;
   line-height: 1.4;
@@ -6,66 +6,39 @@ body {
   background-size: cover;
   margin: 0;
   padding: 0;
-}
-::selection {
-  background: #b3d4fc;
-}
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-textArea {
-  resize: vertical;
-}
-#game-board {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 510px;
-  height: 300px;
-  margin: 0 10px;
-  background-color: #dfdfdf;
-  position: relative;
-  float: right;
-}
-/*.pegs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 300px;
-  background-color: #dfdfdf;
-  padding: 25px;
-  position: absolute;
-  top: 0;
-  left: 0;
 }*/
-
-.tower {
+.game-board {
+  width: 400px;
+  height: 250px;
+  margin: 10px 10px;
+  padding: 30px;
+  background-color: #dfdfdf;
+  /*position: relative;*/
+}
+.towers {
   /* move common styles here, specific styles to specific tower class */
   font-family: 'Aristocrat', 'Helvetica', sans-serif;
   font-weight: 200;
   font-size: 200px;
   color: black;
-  transform: rotate(180deg);
   z-index: 10;
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-
+.tower-left {
+  line-height: .75;
+  transform: rotate(180deg);
+}
+.tower-mid {
+  line-height: .75;
+  transform: rotate(180deg);
+}
+.tower-right {
+  line-height: .75;
+  transform: rotate(180deg);
+}
 /*.left-tower {
   font-family: 'Aristocrat', 'Helvetica', sans-serif;
   font-weight: 200;
@@ -93,42 +66,71 @@ textArea {
   padding: 25px;
   z-index: 10;
 }*/
-
-#disc0 {
+.discs-container {
+  width: 334px;
+  height: 150px;
+}
+/*.disc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}*/
+.disc0 {
   width: 52.5px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #e91e63;
-  position: relative;
 }
-
-#disc1 {
+.disc1 {
   width: 70px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #673ab7;
-  position: relative;
 }
-
-#disc2 {
+.disc2 {
   width: 87.5px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #3f51b5;
-  position: relative;
 }
-
+.discs-left {
+  width: 111px;
+  height: 139px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.discs-mid {
+  width: 111px;
+  height: 139px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.discs-right {
+  width: 111px;
+  height: 139px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+/*
 #playArea {
   width: 850px;
   height: 550px;
   padding: 10px 0;
   margin: 10px auto;
   border-radius:8px;
-}
-
+}*/
+/*
 #header {
   margin: 0 10px 10px 0;
   width: 510px;
@@ -153,4 +155,4 @@ textArea {
 #moves > ol {
   padding: 2px 0 6px 30px;
   font-size: 0.9em;
-}
+}*/

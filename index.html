@@ -7,47 +7,46 @@
     <title>Tower of Hanoi</title>
   </head>
   <body>
-    <div id="playArea">
+    <!-- <div id="playArea">
       <div id="moves">
         <ol></ol>
       </div>
-      <div id="header"></div>
-      <div id="game-board">
-        <div class="disc" id="disc0"></div>
-        <div class="disc" id="disc1"></div>
-        <div class="disc" id="disc2"></div>
-        <div class="tower" id="left-tower">T</div>
-        <div class="tower" id="mid-tower">T</div>
-        <div class="tower" id="right-tower">T</div>
+      <div id="header">Tower of Hanoi</div> -->
+
+        <!-- // something like this:
+        div.game-board
+          div.towers
+            div.tower.tower-left
+            div.tower.tower-mid
+            div.tower.tower-right
+          div.disks
+            div.disks-left
+              div.disk.disk-1
+              div.disk.disk-2
+              div.disk.disk-3
+              div.disk.disk-4
+            div.disks-mid
+            div.disks-right
+        -->
+      <div class="game-board">
+        <div class="towers">
+          <div class="tower tower-left">T</div>
+          <div class="tower tower-mid">T</div>
+          <div class="tower tower-right">T</div>
+        </div>
+        <div class="discs-container">
+          <div class="discs-left">
+            <div class="disc disc0" draggable="true"></div>
+            <div class="disc disc1" draggable="true"></div>
+            <div class="disc disc2" draggable="true"></div>
+          </div>
+          <div class="discs-mid">
+          </div>
+          <div class="discs-right">
+          </div>
+        </div>
       </div>
-    </div>
-      <!-- <div class="disks"> -->
-        <!-- <div class="disks-left">
-          <div class="disk-1">
-          </div>
-          <div class="disk-2">
-          </div>
-          <div class="disk-3">
-          </div>
-        </div> -->
-        <!-- <div class="disks-mid">
-        </div>
-        <div class="disks-right">
-        </div>
-      </div> -->
-
-
-    <!--
-    div.disks
-      div.disks-left
-        div.disk.disk-1
-        div.disk.disk-2
-        div.disk.disk-3
-        div.disk.disk-4
-      div.disks-mid
-      div.disks-right
-    -->
-
     <script src="tower.js"></script>
+    <script src="disc.js"></script>
   </body>
 </html>
