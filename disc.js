@@ -10,13 +10,13 @@ function drag (ev) {
 
 function drop (ev) {
   var data = ev.dataTransfer.getData("text")
-  ev.target.appendChild(document.querySelector(".discs"))
+  ev.target.appendChild(document.querySelector(disc))
   ev.preventDefault()
 }
 
 window.onload = function() {
   var dragged = document.querySelector(".disc")
-  var dropHere = document.querySelector(".discs")
+  var dropHere = document.querySelector(".tower")
   dragged.ondragstart = drag
   dropHere.ondragover = allowDrop
   dropHere.ondrop = drop

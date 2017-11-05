@@ -5,40 +5,6 @@ $(document).ready(function() {
 // var pinkDisc = document.querySelector('#disc0')
 // var purpleDisc = document.querySelector('#disc1')
 // var blueDisc = document.querySelector('#disc2')
-document.addEventListener("dragstart", function(event) {
-    event.dataTransfer.setData("Text", event.target.class);
-//     document.getElementById("demo").innerHTML = "Started to drag the p element.";
-    event.target.style.opacity = "0.4";
-});
-document.addEventListener("drag", function(event) {
-    document.querySelector("disc");
-});
-document.addEventListener("dragend", function(event) {
-//     document.getElementById("demo").innerHTML = "Finished dragging the p element.";
-    event.target.style.opacity = "1";
-});
-document.addEventListener("dragenter", function(event) {
-    if ( event.target.className == "discs" ) {
-        event.target.style.border = "3px dotted red";
-    }
-});
-document.addEventListener("dragover", function(event) {
-    event.preventDefault();
-});
-document.addEventListener("dragleave", function(event) {
-    if ( event.target.className == "discs" ) {
-        event.target.style.border = "";
-    }
-});
-document.addEventListener("drop", function(event) {
-    event.preventDefault();
-    if ( event.target.className == "discs" ) {
-        // document.getElementById("demo").style.color = "";
-        event.target.style.border = "";
-        // var data = event.dataTransfer.getData("Text");
-        // event.target.appendChild(document.getElementById(data));
-    }
-});
 
 const towerLeft = [3, 2, 1]
 // var leftElement = document.querySelector('#discs-left')
@@ -59,7 +25,7 @@ let onStart = true
 function timeStamp () {
   return Math.floor(Date.now() / 1000)
 }
-$(".discs-container").click(function(e) {
+$(".disc").click(function(e) {
   if (onStart) {
     $(".moves").text(`MIN 7 MOVES`)
     timeStart = timeStamp()
