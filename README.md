@@ -5,8 +5,6 @@ _Game Objective_: Move all of the discs from the left post to the right post.  Y
 
 _Technologies Used_: The initial placement of the posts and discs were setup using HTML and CSS.  All of the game logic and movement of the discs was done in Javascript.  The game is deployed directly into the browser.
 
-_Approach Taken_: I found a series of youtube videos by Anthony Vipond on creating a game demo using jquery.  The demo didn't allow the user to actually play the game though.
-
 _Unresolved Issues_: The initial setup is there but the Javascript code doesn't work yet.  I had issues getting the HTML and CSS positioned properly and am still trying to understand the game logic.
 
 _Hosted Project URL_: (https://taylorjaredd.github.io/tower_of_hanoi/)
