@@ -29,7 +29,10 @@ console.log(towerLeft)
 leftTower.removeChild(pinkDisc)
 rightTower.appendChild(pinkDisc)
 
-
+leftTower.addEventListener("click", function(evt) {
+  evt.preventDefault()
+  
+})
 
 
 
