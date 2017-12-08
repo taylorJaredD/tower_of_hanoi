@@ -35,17 +35,17 @@
 .discs-container {
   width: 334px;
   height: 150px;
-  /*display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .discs {
   width: 334px;
   height: 150px;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
+  /*display: flex;*/
+  /*flex-direction: column-reverse;*/
+  /*align-items: center;*/
 }
 .disc0 {
   width: 52.5px;
