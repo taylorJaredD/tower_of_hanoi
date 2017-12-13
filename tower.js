@@ -1,76 +1,91 @@
-// $(document).ready(function() {
 
-// var pinkDisc = document.querySelector('#disc0')
-// var purpleDisc = document.querySelector('#disc1')
-// var blueDisc = document.querySelector('#disc2')
 
 const towerLeft = []
-const towerMid = []
+const towerMid = [3, 2, 1]
 const towerRight = []
-const tempTower = []
-let clickedTower = document.querySelector('.discs')
-let pinkDisc = document.querySelector('.disc0')
-let purpleDisc = document.querySelector('.disc1')
-let blueDisc = document.querySelector('.disc2')
 
+let sourceTower
+let destTower
+
+let hasClicked = false
+
+
+// let clickedTower = document.querySelector('.discs')
+// let pinkDisc = document.querySelector('.disc0')
+// let purpleDisc = document.querySelector('.disc1')
+// let blueDisc = document.querySelector('.disc2')
+//
 let leftTower = document.querySelector('.discs-left')
 let middleTower = document.querySelector('.discs-mid')
 let rightTower = document.querySelector('.discs-right')
 
-towerLeft.push(pinkDisc, purpleDisc, blueDisc)
-console.log(towerLeft)
-
-// leftTower.removeChild(pinkDisc)
-// rightTower.appendChild(pinkDisc)
-// clickedTower.addEventListener("click", function(evt) {
-//   evt.preventDefault()
-// })
-leftTower.addEventListener("click", function(evt) {
+function registerClick (evt) {
   evt.preventDefault()
+  // console.log(this)
   // clicked()
-  firstClick()
-  secondClick()
-})
-
-middleTower.addEventListener("click", function(evt) {
-  evt.preventDefault()
-  // clicked()
-})
-
-rightTower.addEventListener("click", function(evt) {
-  evt.preventDefault()
-  // clicked()
-})
-
-function firstClick() {
-  let holder = towerLeft.pop()
-  console.log(holder)
-  leftTower.removeChild(pinkDisc)
-  holder = tempTower.push()
-  console.log(holder)
+  if (!hasClicked) {
+    // console.log('first click')
+    firstClick(this)
+    hasClicked = true
+  } else {
+    // console.log('second click')
+    secondClick(this)
+    hasClicked = false
+  }
 }
 
-function secondClick() {
-  let holder = tempTower.pop()
-  console.log(tempTower)
-  let targetTower = towerRight.push()
-  console.log(targetTower)
-  rightTower.appendChild(pinkDisc)
+function firstClick (element) {
+  let source = element.className
+  if (source === "discs-left") {
+    sourceTower = towerLeft
+  } else if (source === "discs-mid") {
+    sourceTower = towerMid
+  } else if (source === "discs-right") {
+    sourceTower = towerRight
+  } else {
+    console.alert("invalid tower clicked")
+  }
 }
 
-// function clicked() {
-//   if (clickedTower === leftTower) {
-//     tempTower.pop()
-//     leftTower.push()
-//   } else if (clickedTower === middleTower) {
-//     tempTower.pop()
-//     middleTower.push()
-//   } else if (clickedTower === rightTower) {
-//     tempTower.pop()
-//     rightTower.push()
-//   }
-// // else {
-// //   invalidMove
-// // }
-// }
-// })
+function secondClick (element) {
+  let dest = element.className
+  console.log(dest)
+  if (dest === "discs-left") {
+    destTower = towerLeft
+  } else if (dest === "discs-mid") {
+    destTower = towerMid
+  } else if (dest === "discs-right") {
+    destTower = towerRight
+  } else {
+    console.alert("invalid tower clicked")
+  }
+  checkRules()
+}
+
+function checkRules () {
+  let currentDisc = sourceTower[sourceTower.length - 1]
+  let topDestDisc = destTower[destTower.length - 1]
+
+
+
+    if (currentDisc && destTower.length === 0) {
+      doMove()
+    } else if (currentDisc && topDestDisc && currentDisc < topDestDisc) {
+      doMove()
+    } else {
+      console.log("move not allowed")
+    }
+  }
+
+  function doMove () {
+    console.log("moving discs")
+  }
+
+
+
+
+leftTower.addEventListener("click", registerClick)
+
+middleTower.addEventListener("click", registerClick)
+
+rightTower.addEventListener("click", registerClick)
