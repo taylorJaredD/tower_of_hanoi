@@ -1,12 +1,16 @@
 
 .game-board {
-  width: 400px;
-  height: 250px;
-  margin: 10px 10px;
+  width: 360px;
+  /*height: 250px;*/
+  margin: 10px auto;
   padding: 30px;
   background-color: #dfdfdf;
   /*position: relative;*/
 }
+header {
+  text-align: center;
+}
+
 .towers {
   /* move common styles here, specific styles to specific tower class */
   font-family: 'Aristocrat', 'Helvetica', sans-serif;
