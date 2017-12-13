@@ -47,21 +47,21 @@
   /*flex-direction: column-reverse;*/
   /*align-items: center;*/
 }
-.disc0 {
+.disc1 {
   width: 52.5px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #e91e63;
 }
-.disc1 {
+.disc2 {
   width: 70px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #673ab7;
 }
-.disc2 {
+.disc3 {
   width: 87.5px;
   height: 20px;
   border-radius: 4px;
