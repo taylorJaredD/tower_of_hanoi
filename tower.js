@@ -1,177 +1,120 @@
-$(document).ready(function() {
-// Referenced a youtube video series by Anthony Vipond
-// Create a game with jQuery UI - Tower of Hanoi
-var hanoiGame = {
-    disc_height: $('#disc1').outerHeight(),
-    distance_between_towers: $('#tower1').position().left - $('#tower0').position().left,
-    top: $('.tower').height(),
-    ordered_list: $('#moves > ol'),
 
-    list_items: [],
-    list_html: '',
-    columns: [0, 0, 0],
-    move_from: [],
-    move_to: [],
-    disc_order: [],
-    animate_count: 0,
-    timeout: null,
-    started: 0,
-}
-function update_move_from_array (disc) {
-  if (disc == 'tower0') {
-    disc = 0
-  } else if (disc == 'tower1') {
-    disc = 1
-  } else if (disc == 'tower2') {
-    disc = 2
-  }
-  hanoiGame.move_from.push(disc)
-}
-function update_move_to_array (disc) {
-  if (disc == 'tower0') {
-    disc = 0
-  } else if (disc == 'tower1') {
-    disc = 1
-  } else if (disc == 'tower2') {
-    disc = 2
-  }
-  hanoiGame.move_to.push(disc)
-}
-function hanoi(disc, src, hlp, goal) {
-  if (disc > 0) {
-    hanoi(disc - 1, src, goal, hlp)
-    hanoiGame.list_items.push('<li>Move disc ' + disc + ' from ' + src + ' to ' + goal + '</li>')
-    update_move_from_array(src)
-    update_move_to_array(goal)
-    hanoiGame.disc_order.push(disc - 1)
-    hanoi(disc - 1, hlp, src, goal)
+// Create three arrays that will be used to keep track of the discs in the game logic.
+// These will also be used to reference the discs when updating the DOM elements.
+const towerLeft = [3, 2, 1]
+const towerMid = []
+const towerRight = []
+
+// Temporary variables used to indicate the first and second clicks.
+let sourceTower
+let destTower
+
+// A boolean to know if a click happened.
+let hasClicked = false
+
+// Variables to store the DOM elements.
+let pinkDisc = document.querySelector('.disc1')
+let purpleDisc = document.querySelector('.disc2')
+let blueDisc = document.querySelector('.disc3')
+
+let leftTower = document.querySelector('.discs-left')
+let middleTower = document.querySelector('.discs-mid')
+let rightTower = document.querySelector('.discs-right')
+
+// Temporary variables used when updating the disc DOM elements.
+let sourceDomTower
+let destDomTower
+
+// Variable to keep track of how many moves the player has made.
+let moveCounter = 0
+let movesDom = document.querySelector('.moves')
+
+// A function to know if a click happened first or second.
+function registerClick (evt) {
+  evt.preventDefault()
+  if (!hasClicked) {
+    firstClick(this)
+    hasClicked = true
+  } else {
+    secondClick(this)
+    hasClicked = false
   }
 }
-function get_distance_down(move_number) {
-  var move_from = hanoiGame.move_from[move_number - 1]
-  var move_to = hanoiGame.move_to[move_number - 1]
 
-  if (move_from === 0) {
-    hanoiGame.columns[0] -= 1
-  } else if (move_from === 1) {
-    hanoiGame.columns[1] -= 1
-  } else if (move_from === 2) {
-    hanoiGame.columns[2] -= 1
-  }
-
-  if (move_to === 0) {
-    hanoiGame.columns[0] += 1
-  } else if (move_to === 1) {
-    hanoiGame.columns[1] += 1
-  } else if (move_to === 2) {
-    hanoiGame.columns[2] += 1
-  }
-  return (hanoiGame.columns[move_to] - 1) * (hanoiGame.disc_height) + 'px'
-}
-// function get_left_value() {
-//   var current_disc = game.disc_order[game.animate_count - 1]
-//   var left_value = $('#disc' + current_disc).position().left
-//   var direction = (game.move_from[game.animate_count - 1] < game.most_to[game.animate_count - 1]) ? 'right' : 'left'
-//
-//   if (direction == 'right') {
-//     var multiplier = (game.move_to[game.animate_count - 1] - game.move_from[game.animate_count - 1] == 2) ? 2 : 1
-//   } else if (direction == 'left') {
-//     var multiplier = (game.move_to[game.animate_count - 1] + game.move_from[game.animate_count - 1] == 2) ? -2 : -1
-//   }
-//   return left_value + (game.distance_between_towers * multiplier) + 'px'
-// }
-//
-// function send_disc_down(distance_down) {
-//   $('#disc' + hanoiGame.disc_order[hanoiGame.animate_count - 1]).animate({
-//     bottom: distance_down
-//   }, 250,
-//     'swing',
-//     function() {
-//       if (hanoiGame.animate_count < hanoiGame.move_to.length) {
-//         send_disc_up()
-//       }
-//     }
-//   )
-// }
-// function send_disc_across() {
-//   var left_value = get_left_value()
-//   $('#disc' + hanoiGame.disc_order[hanoiGame.animate_count - 1]).animate({
-//     left: left_value
-//   }, 250,
-//   'swing',
-//   function() {
-//     var distance_down = get_distance_down(hanoiGame.animate_count)
-//     send_disc_down(distance_down)
-//   }
-//   )
-// }
-// function send_disc_up() {
-//   clearTimeout(hanoiGame.timeout)
-//   hanoiGame.animate_count += 1
-//   $('#disc' + hanoiGame.disc_order[hanoiGame.animate_count - 1]).animate({
-//     bottom: hanoiGame.top
-//   }, 250,
-//   'swing',
-//   function() {
-//     // hanoiGame.list_html += hanoiGame.list_items.shift()
-//     // hanoiGame.ordered_list.html('')
-//     // hanoiGame.ordered_list.append(hanoiGame.list_html)
-//     hanoiGame.ordered_list.prepend(hanoiGame.list_items.shift())
-//     send_disc_across()
-//   }
-//   )
-// }
-function calculate_all_moves(discs) {
-  hanoiGame.columns[0] = discs
-  hanoi(discs, 'tower0', 'tower1', 'tower2')
-}
-function check_for_data_errors() {
-  if (game.distance_between_towers !== $('#tower2').position().left - $('#tower1').position().left) {
-    alert("The towers are not an equal distance apart")
+// A function to know which of the towers were clicked first.
+function firstClick (element) {
+  let source = element.className
+  if (source === "discs-left") {
+    sourceTower = towerLeft
+    sourceDomTower = leftTower
+  } else if (source === "discs-mid") {
+    sourceTower = towerMid
+    sourceDomTower = middleTower
+  } else if (source === "discs-right") {
+    sourceTower = towerRight
+    sourceDomTower = rightTower
+  } else {
+    console.alert("invalid tower clicked")
   }
 }
-// function populate_discs(discs) {
-//   var disc_html = ''
-//   var bottom = (discs * hanoiGame.disc_height) - hanoiGame.disc_height
-//
-//   for (var i = 0; i < discs; i += 1) {
-//     disc_html += <div class="disc" id='disc' + i + ''></div>
-//   }
-//   $('#discs').html(disc_html)
-//   for (var i = 0; i < discs; i += 1) {
-//     $('#disc' + i).css('bottom', bottom + 'px')
-//     bottom = bottom - hanoiGame.disc_height
-//   }
-// }
 
-calculate_all_moves(3)
-//check_for_data_errors()
+// A function to know which of the towers were clicked second and if the move is allowed.
+function secondClick (element) {
+  let dest = element.className
+  if (dest === "discs-left") {
+    destTower = towerLeft
+    destDomTower = leftTower
+  } else if (dest === "discs-mid") {
+    destTower = towerMid
+    destDomTower = middleTower
+  } else if (dest === "discs-right") {
+    destTower = towerRight
+    destDomTower = rightTower
+  } else {
+    console.alert("invalid tower clicked")
+  }
+  checkRules()
+}
 
-// $('input').click(function() {
-//   if (hanoiGame.started == 0) {
-//       hanoiGame.started = 1
-//       var disc_amount = parseInt($(this).attr('id'))
-//       populate_discs(disc_amount)
-//       calculate_all_moves(disc_amount)
-//       hanoiGame.timeout - setTimeout(send_disc_up, 300)
-//   } else {
-//     clearTimeout(hanoiGame.timeout)
-//     hanoiGame.list_items = []
-//     hanoiGame.list_html = ''
-//     hanoiGame.columns = [0, 0, 0]
-//     hanoiGame.move_from = []
-//     hanoiGame.move_to = []
-//     hanoiGame.animate_count = 0
-//     hanoiGame.ordered_list.html('')
-//     $('#discs').html('')
-//
-//     var disc_amount = parseInt($(this).attr('id'))
-//     populate_discs(disc_amount)
-//     calculate_all_moves(disc_amount)
-//   }
-// })
+// A function to determine if a move is allowed or not.
+function checkRules () {
+  let currentDisc = sourceTower[sourceTower.length - 1]
+  let topDestDisc = destTower[destTower.length - 1]
+    if (currentDisc && destTower.length === 0) {
+      doMove()
+    } else if (currentDisc && topDestDisc && currentDisc < topDestDisc) {
+      doMove()
+    } else {
+      console.log("move not allowed")
+    }
+}
 
-// setTimeout(send_disc_up, 1500)
-console.log(window.hanoiGame)
+// A function to perform the move and update the DOM elements.
+function doMove () {
+  let tempDisc = sourceTower.pop()
+  let tempDomDisc = document.querySelector(`.disc${tempDisc}`)
+  sourceDomTower.removeChild(tempDomDisc)
+  destTower.push(tempDisc)
+  document.querySelector(`.disc${tempDisc}`)
+  destDomTower.insertBefore(tempDomDisc, destDomTower.childNodes[0])
+  moveCounter++
+}
 
-})
+// A function to check if the player has won and congratulate them.
+function winCondition () {
+  // if towerRight = [3, 2, 1]
+  // don't allow anymore clicks besides resetButton
+  // alert you win
+  // resetGame()
+}
+
+// A function to reset the game state to the initial values
+// function resetGame {
+// resetButton clicked
+// reset arrays, moveCounter, DOM elements, temp source and dest towers
+//}
+
+// Event listeners added to the towers.
+leftTower.addEventListener("click", registerClick)
+middleTower.addEventListener("click", registerClick)
+rightTower.addEventListener("click", registerClick)

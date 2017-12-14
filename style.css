@@ -1,20 +1,16 @@
-/*body {
-  font-size: 1em;
-  color: #444;
-  line-height: 1.4;
-  font: "Verdana", "Geneva", sans-serif;
-  background-size: cover;
-  margin: 0;
-  padding: 0;
-}*/
+
 .game-board {
-  width: 400px;
-  height: 250px;
-  margin: 10px 10px;
+  width: 360px;
+  /*height: 250px;*/
+  margin: 10px auto;
   padding: 30px;
   background-color: #dfdfdf;
   /*position: relative;*/
 }
+header {
+  text-align: center;
+}
+
 .towers {
   /* move common styles here, specific styles to specific tower class */
   font-family: 'Aristocrat', 'Helvetica', sans-serif;
@@ -39,64 +35,57 @@
   line-height: .75;
   transform: rotate(180deg);
 }
-/*.left-tower {
-  font-family: 'Aristocrat', 'Helvetica', sans-serif;
-  font-weight: 200;
-  font-size: 200px;
-  color: black;
-  transform: rotate(180deg);
-  padding: 25px;
-  z-index: 10;
-}
-.mid-tower {
-  font-family: 'Aristocrat', 'Helvetica', sans-serif;
-  font-weight: 200;
-  font-size: 200px;
-  color: black;
-  transform: rotate(180deg);
-  padding: 25px;
-  z-index: 10;
-}
-.right-tower {
-  font-family: 'Aristocrat', 'Helvetica', sans-serif;
-  font-weight: 200;
-  font-size: 200px;
-  color: black;
-  transform: rotate(180deg);
-  padding: 25px;
-  z-index: 10;
-}*/
+
 .discs-container {
   width: 334px;
   height: 150px;
-}
-/*.disc {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: relative;
-}*/
-.disc0 {
+  padding: 0 0 30px 0;
+}
+.discs {
+  width: 334px;
+  height: 150px;
+  /*display: flex;*/
+  /*flex-direction: column-reverse;*/
+  /*align-items: center;*/
+}
+.disc1 {
   width: 52.5px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #e91e63;
 }
-.disc1 {
+.disc2 {
   width: 70px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #673ab7;
 }
-.disc2 {
+.disc3 {
   width: 87.5px;
   height: 20px;
   border-radius: 4px;
   z-index: 20;
   background-color: #3f51b5;
+}
+.disc4 {
+  width: 40px;
+  height: 20px;
+  border-radius: 4px;
+  z-index: 20;
+  background-color: #42f456;
+}
+.disc5 {
+  width: 60px;
+  height: 20px;
+  border-radius: 4px;
+  z-index: 20;
+  background-color: #ea8f10;
 }
 .discs-left {
   width: 111px;
@@ -105,6 +94,8 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  z-index: 10;
+  padding: 0 0 10px 0;
 }
 .discs-mid {
   width: 111px;
@@ -113,6 +104,8 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  z-index: 10;
+  padding: 0 0 10px 0;
 }
 .discs-right {
   width: 111px;
@@ -121,38 +114,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  z-index: 10;
+  padding: 0 0 10px 0;
 }
-/*
-#playArea {
-  width: 850px;
-  height: 550px;
-  padding: 10px 0;
-  margin: 10px auto;
-  border-radius:8px;
-}*/
-/*
-#header {
-  margin: 0 10px 10px 0;
-  width: 510px;
-  height: 160px;
-  position: relative;
-  border-radius: 6px;
-  background-color: #CCC;
-  float: right;
-}
-#moves {
-  margin: 0 0 10px 10px;
-  width: 280px;
-  height: 420px;
-  border-radius: 6px;
-  background-color: #CCC;
-  position: relative;
-  float: left;
-}
-#moves > ol {
-  padding: 3px;
-}
-#moves > ol {
-  padding: 2px 0 6px 30px;
-  font-size: 0.9em;
-}*/
