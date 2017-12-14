@@ -25,6 +25,10 @@ let rightTower = document.querySelector('.discs-right')
 let sourceDomTower
 let destDomTower
 
+// Variable to keep track of how many moves the player has made.
+let moveCounter = 0
+let movesDom = document.querySelector('.moves')
+
 // A function to know if a click happened first or second.
 function registerClick (evt) {
   evt.preventDefault()
@@ -83,18 +87,32 @@ function checkRules () {
     } else {
       console.log("move not allowed")
     }
-  }
+}
 
 // A function to perform the move and update the DOM elements.
-  function doMove () {
-    let tempDisc = sourceTower.pop()
-    let tempDomDisc = document.querySelector(`.disc${tempDisc}`)
-    sourceDomTower.removeChild(tempDomDisc)
-    destTower.push(tempDisc)
-    document.querySelector(`.disc${tempDisc}`)
-    destDomTower.insertBefore(tempDomDisc, destDomTower.childNodes[0])
-    // moveCounter++
-  }
+function doMove () {
+  let tempDisc = sourceTower.pop()
+  let tempDomDisc = document.querySelector(`.disc${tempDisc}`)
+  sourceDomTower.removeChild(tempDomDisc)
+  destTower.push(tempDisc)
+  document.querySelector(`.disc${tempDisc}`)
+  destDomTower.insertBefore(tempDomDisc, destDomTower.childNodes[0])
+  moveCounter++
+}
+
+// A function to check if the player has won and congratulate them.
+function winCondition () {
+  // if towerRight = [3, 2, 1]
+  // don't allow anymore clicks besides resetButton
+  // alert you win
+  // resetGame()
+}
+
+// A function to reset the game state to the initial values
+// function resetGame {
+// resetButton clicked
+// reset arrays, moveCounter, DOM elements, temp source and dest towers
+//}
 
 // Event listeners added to the towers.
 leftTower.addEventListener("click", registerClick)
