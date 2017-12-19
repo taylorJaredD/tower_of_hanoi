@@ -10,8 +10,8 @@
     <header>
       <nav>
         <h1>Tower of Hanoi</h1>
-        <h2>Number of moves: </h2>
-        <div class="moves"> </div>
+        <h2>Number of moves: <span class="moves"></span></h2>
+        <h3 id="win">Congratulations, You Won!</h3>
       </nav>
     </header>
       <div class="game-board">
@@ -34,8 +34,11 @@
           </div>
         </div>
       </div>
+      <div class="wrapper">
+        <button class="button" onclick="resetGame()">Reset Game</button>
+      </div>
     <script src="disc.js"></script>
     <script src="tower.js"></script>
-
   </body>
+
 </html>
