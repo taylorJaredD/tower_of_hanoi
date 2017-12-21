@@ -118,24 +118,11 @@ function winCondition () {
 }
 
 // A function to reset the game state to the initial values
-// function resetGame  () {
-//   resetButton clicked
-//   reset arrays, moveCounter, DOM elements, temp source and dest towers
-//   leftTower = [5, 4, 3, 2, 1]
-//   sourceTower = null
-//   destTower = null
-// }
+function resetGame () {
+  location.reload()
+}
 
 // Event listeners added to the towers.
 leftTower.addEventListener("click", registerClick)
 middleTower.addEventListener("click", registerClick)
 rightTower.addEventListener("click", registerClick)
-
-
-function resetGame () {
-  // let btnReset = document.querySelector('resetButton')
-  // btnReset.addEventListener("click", (e) => {
-  //   e.preventDefault()
-    location.reload()
-  // })
-}
