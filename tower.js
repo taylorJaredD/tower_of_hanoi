@@ -1,7 +1,7 @@
 
 // Create three arrays that will be used to keep track of the discs in the game logic.
 // These will also be used to reference the discs when updating the DOM elements.
-const towerLeft = [3, 2, 1]
+const towerLeft = [5, 4, 3, 2, 1]
 const towerMid = []
 const towerRight = []
 
@@ -16,8 +16,8 @@ let hasClicked = false
 let greenDisc = document.querySelector('.disc1')
 let pinkDisc = document.querySelector('.disc2')
 let orangeDisc = document.querySelector('.disc3')
-// let purpleDisc = document.querySelector('.disc4')
-// let blueDisc = document.querySelector('.disc5')
+let purpleDisc = document.querySelector('.disc4')
+let blueDisc = document.querySelector('.disc5')
 
 let leftTower = document.querySelector('.discs-left')
 let middleTower = document.querySelector('.discs-mid')
@@ -103,7 +103,7 @@ function doMove () {
   destDomTower.insertBefore(tempDomDisc, destDomTower.childNodes[0])
   moveCounter++
   movesDom.innerHTML = moveCounter
-  if (destTower.length === 3) {
+  if (destTower.length === 5) {
     winCondition()
   }
 }
@@ -115,28 +115,14 @@ function winCondition () {
   rightTower.removeEventListener("click", registerClick)
   let won = document.getElementById('win')
   won.style.visibility = "visible"
-  // resetGame()
 }
 
 // A function to reset the game state to the initial values
-// function resetGame  () {
-//   resetButton clicked
-//   reset arrays, moveCounter, DOM elements, temp source and dest towers
-//   leftTower = [5, 4, 3, 2, 1]
-//   sourceTower = null
-//   destTower = null
-// }
+function resetGame () {
+  location.reload()
+}
 
 // Event listeners added to the towers.
 leftTower.addEventListener("click", registerClick)
 middleTower.addEventListener("click", registerClick)
 rightTower.addEventListener("click", registerClick)
-
-
-// function resetGame () {
-  // let btnReset = document.querySelector('button')
-  // btnReset.addEventListener("click", (e) => {
-  //   e.preventDefault()
-  //   document.reload()
-  // })
-// }
