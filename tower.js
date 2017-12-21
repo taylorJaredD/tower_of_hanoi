@@ -13,9 +13,11 @@ let destTower
 let hasClicked = false
 
 // Variables to store the DOM elements.
-let pinkDisc = document.querySelector('.disc1')
-let purpleDisc = document.querySelector('.disc2')
-let blueDisc = document.querySelector('.disc3')
+let greenDisc = document.querySelector('.disc1')
+let pinkDisc = document.querySelector('.disc2')
+let orangeDisc = document.querySelector('.disc3')
+// let purpleDisc = document.querySelector('.disc4')
+// let blueDisc = document.querySelector('.disc5')
 
 let leftTower = document.querySelector('.discs-left')
 let middleTower = document.querySelector('.discs-mid')
@@ -28,6 +30,8 @@ let destDomTower
 // Variable to keep track of how many moves the player has made.
 let moveCounter = 0
 let movesDom = document.querySelector('.moves')
+movesDom.innerHTML = moveCounter
+
 
 // A function to know if a click happened first or second.
 function registerClick (evt) {
@@ -98,23 +102,41 @@ function doMove () {
   document.querySelector(`.disc${tempDisc}`)
   destDomTower.insertBefore(tempDomDisc, destDomTower.childNodes[0])
   moveCounter++
+  movesDom.innerHTML = moveCounter
+  if (destTower.length === 3) {
+    winCondition()
+  }
 }
 
 // A function to check if the player has won and congratulate them.
 function winCondition () {
-  // if towerRight = [3, 2, 1]
-  // don't allow anymore clicks besides resetButton
-  // alert you win
+  leftTower.removeEventListener("click", registerClick)
+  middleTower.removeEventListener("click", registerClick)
+  rightTower.removeEventListener("click", registerClick)
+  let won = document.getElementById('win')
+  won.style.visibility = "visible"
   // resetGame()
 }
 
 // A function to reset the game state to the initial values
-// function resetGame {
-// resetButton clicked
-// reset arrays, moveCounter, DOM elements, temp source and dest towers
-//}
+// function resetGame  () {
+//   resetButton clicked
+//   reset arrays, moveCounter, DOM elements, temp source and dest towers
+//   leftTower = [5, 4, 3, 2, 1]
+//   sourceTower = null
+//   destTower = null
+// }
 
 // Event listeners added to the towers.
 leftTower.addEventListener("click", registerClick)
 middleTower.addEventListener("click", registerClick)
 rightTower.addEventListener("click", registerClick)
+
+
+// function resetGame () {
+  // let btnReset = document.querySelector('button')
+  // btnReset.addEventListener("click", (e) => {
+  //   e.preventDefault()
+  //   document.reload()
+  // })
+// }
