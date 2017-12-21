@@ -110,14 +110,12 @@ function doMove () {
 
 // A function to check if the player has won and congratulate them.
 function winCondition () {
-  // if towerRight = [5, 4, 3, 2, 1] {
-    leftTower.removeEventListener("click", registerClick)
-    middleTower.removeEventListener("click", registerClick)
-    rightTower.removeEventListener("click", registerClick)
-    let won = document.getElementById('win')
-    won.style.visibility = "visible"
-    // resetGame()
-  // }
+  leftTower.removeEventListener("click", registerClick)
+  middleTower.removeEventListener("click", registerClick)
+  rightTower.removeEventListener("click", registerClick)
+  let won = document.getElementById('win')
+  won.style.visibility = "visible"
+  // resetGame()
 }
 
 // A function to reset the game state to the initial values
@@ -136,9 +134,9 @@ rightTower.addEventListener("click", registerClick)
 
 
 // function resetGame () {
-//   let btnReset = document.querySelector('button')
-//   btnReset.addEventListener("click", (e) => {
-//     e.preventDefault()
-//     gameInitial()
-//   })
+  // let btnReset = document.querySelector('button')
+  // btnReset.addEventListener("click", (e) => {
+  //   e.preventDefault()
+  //   document.reload()
+  // })
 // }
